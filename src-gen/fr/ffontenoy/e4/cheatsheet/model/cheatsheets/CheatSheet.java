@@ -26,71 +26,71 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CheatSheet extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Title</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Title</em>' attribute.
-	 * @see #setTitle(String)
-	 * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheet_Title()
-	 * @model required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Title</em>' attribute.
+   * @see #setTitle(String)
+   * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheet_Title()
+   * @model required="true"
+   * @generated
+   */
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatSheet#getTitle <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatSheet#getTitle <em>Title</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Title</em>' attribute.
-	 * @see #getTitle()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Title</em>' attribute.
+   * @see #getTitle()
+   * @generated
+   */
 	void setTitle(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute.
-	 * @see #setDescription(String)
-	 * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheet_Description()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Description</em>' attribute.
+   * @see #setDescription(String)
+   * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheet_Description()
+   * @model
+   * @generated
+   */
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatSheet#getDescription <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatSheet#getDescription <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description</em>' attribute.
-	 * @see #getDescription()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Description</em>' attribute.
+   * @see #getDescription()
+   * @generated
+   */
 	void setDescription(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Items</b></em>' reference list.
-	 * The list contents are of type {@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Items</b></em>' reference list.
+   * The list contents are of type {@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item}.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Items</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Items</em>' reference list.
-	 * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheet_Items()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Items</em>' reference list.
+   * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheet_Items()
+   * @model
+   * @generated
+   */
 	EList<Item> getItems();
 
 } // CheatSheet

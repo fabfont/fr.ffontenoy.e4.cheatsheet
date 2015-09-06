@@ -24,81 +24,81 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Item extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Title</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Title</em>' attribute.
-	 * @see #setTitle(String)
-	 * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getItem_Title()
-	 * @model required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Title</em>' attribute.
+   * @see #setTitle(String)
+   * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getItem_Title()
+   * @model required="true"
+   * @generated
+   */
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item#getTitle <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item#getTitle <em>Title</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Title</em>' attribute.
-	 * @see #getTitle()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Title</em>' attribute.
+   * @see #getTitle()
+   * @generated
+   */
 	void setTitle(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute.
-	 * @see #setDescription(String)
-	 * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getItem_Description()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Description</em>' attribute.
+   * @see #setDescription(String)
+   * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getItem_Description()
+   * @model
+   * @generated
+   */
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item#getDescription <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item#getDescription <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description</em>' attribute.
-	 * @see #getDescription()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Description</em>' attribute.
+   * @see #getDescription()
+   * @generated
+   */
 	void setDescription(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Command</b></em>' reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Command</b></em>' reference.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Command</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Command</em>' reference.
-	 * @see #setCommand(Command)
-	 * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getItem_Command()
-	 * @model required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Command</em>' reference.
+   * @see #setCommand(Command)
+   * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getItem_Command()
+   * @model
+   * @generated
+   */
 	Command getCommand();
 
 	/**
-	 * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item#getCommand <em>Command</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Item#getCommand <em>Command</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Command</em>' reference.
-	 * @see #getCommand()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Command</em>' reference.
+   * @see #getCommand()
+   * @generated
+   */
 	void setCommand(Command value);
 
 } // Item

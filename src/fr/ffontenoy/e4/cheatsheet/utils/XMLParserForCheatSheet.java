@@ -28,257 +28,231 @@ import fr.ffontenoy.e4.cheatsheet.model.cheatsheets.Parameter;
  */
 public final class XMLParserForCheatSheet {
 
-	/**
-	 * Root element name (for "cheatsheets").
-	 */
-	private static final String CHEATSHEETS_ELEMENT_NAME = "cheatsheets";
+  /**
+   * Root element name (for "cheatsheets").
+   */
+  private static final String CHEATSHEETS_ELEMENT_NAME = "cheatsheets";
 
-	/**
-	 * Cheatsheet element name (for "cheatsheet").
-	 */
-	private static final String CHEATSHEET_ELEMENT_NAME = "cheatsheet";
+  /**
+   * Cheatsheet element name (for "cheatsheet").
+   */
+  private static final String CHEATSHEET_ELEMENT_NAME = "cheatsheet";
 
-	/**
-	 * Item element name (for "item").
-	 */
-	private static final String ITEM_ELEMENT_NAME = "item";
+  /**
+   * Item element name (for "item").
+   */
+  private static final String ITEM_ELEMENT_NAME = "item";
 
-	/**
-	 * Command element name (for "command").
-	 */
-	private static final String COMMAND_ELEMENT_NAME = "command";
+  /**
+   * Description element name (for "description").
+   */
+  private static final String DESCRIPTION_ELEMENT_NAME = "description";
+  
+  /**
+   * Command element name (for "command").
+   */
+  private static final String COMMAND_ELEMENT_NAME = "command";
 
-	/**
-	 * Parameter item element name (for "parameter").
-	 */
-	private static final String PARAMETER_ELEMENT_NAME = "parameter";
+  /**
+   * Parameter item element name (for "parameter").
+   */
+  private static final String PARAMETER_ELEMENT_NAME = "parameter";
 
-	/**
-	 * Title attribute name (for "title").
-	 */
-	private static final String TITLE_ATTRIBUTE_NAME = "title";
+  /**
+   * Title attribute name (for "title").
+   */
+  private static final String TITLE_ATTRIBUTE_NAME = "title";
 
-	/**
-	 * Description attribute name (for "description").
-	 */
-	private static final String DESCRIPTION_ATTRIBUTE_NAME = "description";
+  /**
+   * Description attribute name (for "description").
+   */
+  private static final String DESCRIPTION_ATTRIBUTE_NAME = "description";
 
-	/**
-	 * Id attribute name (for "id").
-	 */
-	private static final String ID_ATTRIBUTE_NAME = "id";
+  /**
+   * Id attribute name (for "id").
+   */
+  private static final String ID_ATTRIBUTE_NAME = "id";
 
-	/**
-	 * Required attribute name (for "required").
-	 */
-	private static final String REQUIRED_ATTRIBUTE_NAME = "required";
+  /**
+   * Key attribute name (for "key").
+   */
+  private static final String KEY_ATTRIBUTE_NAME = "key";
 
-	/**
-	 * Key attribute name (for "key").
-	 */
-	private static final String KEY_ATTRIBUTE_NAME = "key";
+  /**
+   * Value attribute name (for "value").
+   */
+  private static final String VALUE_ATTRIBUTE_NAME = "value";
 
-	/**
-	 * Value attribute name (for "value").
-	 */
-	private static final String VALUE_ATTRIBUTE_NAME = "value";
+  /**
+   * Utility class ==> private constructor
+   */
+  private XMLParserForCheatSheet() {
+    // Nothing to do
+  }
 
-	/**
-	 * Utility class ==> private constructor
-	 */
-	private XMLParserForCheatSheet() {
-		// Nothing to do
-	}
+  /**
+   * From the path to the cheatsheets xml file, this methods extracts attributes and build the Cheatsheets object.
+   *
+   * @param pXmlFile The xml file corresponding to the cheatsheets file
+   * @return the Cheatsheets element filled with attributes of the xml file
+   */
+  public static CheatSheets getCheatSheets(final String pXmlFile) {
 
-	/**
-	 * From the path to the cheatsheets xml file, this methods extracts
-	 * attributes and build the Cheatsheets object.
-	 *
-	 * @param pXmlFile
-	 *            The xml file corresponding to the cheatsheets file
-	 * @return the Cheatsheets element filled with attributes of the xml file
-	 */
-	public static CheatSheets getCheatSheets(final String pXmlFile) {
+    final CheatSheets lCheatsheets = CheatsheetsFactory.eINSTANCE.createCheatSheets();
 
-		final CheatSheets lCheatsheets = CheatsheetsFactory.eINSTANCE
-				.createCheatSheets();
+    final DocumentBuilderFactory lFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder lBuilder;
+    try {
+      lBuilder = lFactory.newDocumentBuilder();
 
-		final DocumentBuilderFactory lFactory = DocumentBuilderFactory
-				.newInstance();
-		DocumentBuilder lBuilder;
-		try {
-			lBuilder = lFactory.newDocumentBuilder();
+      // Load the input XML document, parse it and return an instance of
+      // the
+      // Document class.
+      final Document lDocument = lBuilder.parse(new File(new URL(pXmlFile).getFile()));
 
-			// Load the input XML document, parse it and return an instance of
-			// the
-			// Document class.
-			final Document lDocument = lBuilder.parse(new File(
-					new URL(pXmlFile).getFile()));
+      // Get the root element
+      final Element lCheatsheetsElement = lDocument.getDocumentElement();
 
-			// Get the root element
-			final Element lCheatsheetsElement = lDocument.getDocumentElement();
+      if (lCheatsheetsElement.getNodeName().equals(CHEATSHEETS_ELEMENT_NAME)) {
 
-			if (lCheatsheetsElement.getNodeName().equals(
-					CHEATSHEETS_ELEMENT_NAME)) {
+        final Element lElement = lCheatsheetsElement;
 
-				final Element lElement = lCheatsheetsElement;
+        final NodeList lChildren = lElement.getChildNodes();
+        final List<CheatSheet> lTocItems = lCheatsheets.getCheatSheets();
 
-				final NodeList lChildren = lElement.getChildNodes();
-				final List<CheatSheet> lTocItems = lCheatsheets
-						.getCheatSheets();
+        fillCheatsheets(lChildren, lTocItems);
 
-				fillCheatsheets(lChildren, lTocItems);
+      }
 
-			}
+    } catch (IOException | ParserConfigurationException | SAXException lException) {
+      System.err.println("Error occurred while building the cheatsheets: " + lException.getMessage());
+    }
+    return lCheatsheets;
+  }
 
-		} catch (IOException | ParserConfigurationException | SAXException lException) {
-			System.err
-					.println("Error occurred while building the cheatsheets: "
-							+ lException.getMessage());
-		}
-		return lCheatsheets;
-	}
+  /**
+   * Create Cheatsheet objects corresponding to the given DOM element.
+   *
+   * @param pNodeList The DOM elements
+   * @param pCheatsheets The list of cheatsheets to fill
+   */
+  private static void fillCheatsheets(final NodeList pNodeList, final List<CheatSheet> pCheatsheets) {
+    for (int lIndex = 0; lIndex < pNodeList.getLength(); lIndex++) {
 
-	/**
-	 * Create Cheatsheet objects corresponding to the given DOM element.
-	 *
-	 * @param pNodeList
-	 *            The DOM elements
-	 * @param pCheatsheets
-	 *            The list of cheatsheets to fill
-	 */
-	private static void fillCheatsheets(final NodeList pNodeList,
-			final List<CheatSheet> pCheatsheets) {
-		for (int lIndex = 0; lIndex < pNodeList.getLength(); lIndex++) {
+      final Node lNode = pNodeList.item(lIndex);
 
-			final Node lNode = pNodeList.item(lIndex);
+      if (lNode.getNodeType() == Node.ELEMENT_NODE && lNode.getNodeName().equals(CHEATSHEET_ELEMENT_NAME)) {
 
-			if (lNode.getNodeType() == Node.ELEMENT_NODE
-					&& lNode.getNodeName().equals(CHEATSHEET_ELEMENT_NAME)) {
+        final Element lElement = (Element) lNode;
 
-				final Element lElement = (Element) lNode;
+        final CheatSheet lCheatsheet = CheatsheetsFactory.eINSTANCE.createCheatSheet();
 
-				final CheatSheet lCheatsheet = CheatsheetsFactory.eINSTANCE
-						.createCheatSheet();
+        fillCheatsheet(lElement, lCheatsheet);
 
-				fillCheatsheet(lElement, lCheatsheet);
-				
-				pCheatsheets.add(lCheatsheet);
-			}
+        pCheatsheets.add(lCheatsheet);
+      }
 
-		}
-	}
+    }
+  }
 
-	/**
-	 * Fill the given Cheatsheet element from the dom element
-	 * 
-	 * @param pElement the source dom element
-	 * @param pCheatsheet the cheatsheet object to fill
-	 */
-	private static void fillCheatsheet(Element pElement, CheatSheet pCheatsheet) {
-		final String lTitle = pElement.getAttributes()
-				.getNamedItem(TITLE_ATTRIBUTE_NAME).getNodeValue();
-		pCheatsheet.setTitle(lTitle);
+  /**
+   * Fill the given Cheatsheet element from the dom element
+   * 
+   * @param pElement the source dom element
+   * @param pCheatsheet the cheatsheet object to fill
+   */
+  private static void fillCheatsheet(Element pElement, CheatSheet pCheatsheet) {
+    final String lTitle = pElement.getAttributes().getNamedItem(TITLE_ATTRIBUTE_NAME).getNodeValue();
+    pCheatsheet.setTitle(lTitle);
 
-		final String lDescription = pElement.getAttributes()
-				.getNamedItem(DESCRIPTION_ATTRIBUTE_NAME).getNodeValue();
-		pCheatsheet.setDescription(lDescription);
+    final String lDescription = pElement.getAttributes().getNamedItem(DESCRIPTION_ATTRIBUTE_NAME).getNodeValue();
+    pCheatsheet.setDescription(lDescription);
 
-		NodeList lNodeList = pElement.getChildNodes();
+    NodeList lNodeList = pElement.getChildNodes();
 
-		for (int lIndex = 0; lIndex < lNodeList.getLength(); lIndex++) {
+    for (int lIndex = 0; lIndex < lNodeList.getLength(); lIndex++) {
 
-			final Node lNode = lNodeList.item(lIndex);
+      final Node lNode = lNodeList.item(lIndex);
 
-			if (lNode.getNodeType() == Node.ELEMENT_NODE
-					&& lNode.getNodeName().equals(ITEM_ELEMENT_NAME)) {
+      if (lNode.getNodeType() == Node.ELEMENT_NODE && lNode.getNodeName().equals(ITEM_ELEMENT_NAME)) {
 
-				fillCheatsheetItem(lNode, pCheatsheet.getItems());
-			}
-		}
-	}
+        fillCheatsheetItem(lNode, pCheatsheet.getItems());
+      }
+    }
+  }
 
-	/**
-	 * From an dom item element, create an fill the EMF Item element and add it to the given list
-	 * 
-	 * @param pNode the dom item element
-	 * @param pItems the list of Item element to fill
-	 */
-	private static void fillCheatsheetItem(Node pNode, EList<Item> pItems) {
-		Item lItem = CheatsheetsFactory.eINSTANCE.createItem();
-		
-		Element lElement = (Element) pNode;
-		final String lTitle = lElement.getAttributes()
-				.getNamedItem(TITLE_ATTRIBUTE_NAME).getNodeValue();
-		lItem.setTitle(lTitle);
+  /**
+   * From an dom item element, create an fill the EMF Item element and add it to the given list
+   * 
+   * @param pNode the dom item element
+   * @param pItems the list of Item element to fill
+   */
+  private static void fillCheatsheetItem(Node pNode, EList<Item> pItems) {
+    Item lItem = CheatsheetsFactory.eINSTANCE.createItem();
 
-		final String lDescription = lElement.getAttributes()
-				.getNamedItem(DESCRIPTION_ATTRIBUTE_NAME).getNodeValue();
-		lItem.setDescription(lDescription);
-		
-		NodeList lNodeList = lElement.getChildNodes();
-		
-		boolean lCommandAlreadyFound = false;
-		for (int lIndex = 0; lIndex < lNodeList.getLength(); lIndex++) {
+    Element lElement = (Element) pNode;
+    final String lTitle = lElement.getAttributes().getNamedItem(TITLE_ATTRIBUTE_NAME).getNodeValue();
+    lItem.setTitle(lTitle);
 
-			final Node lCommandNode = lNodeList.item(lIndex);
+    final String lDescription = lElement.getAttributes().getNamedItem(DESCRIPTION_ATTRIBUTE_NAME).getNodeValue();
+    lItem.setDescription(lDescription);
 
-			if (lCommandNode.getNodeType() == Node.ELEMENT_NODE
-					&& lCommandNode.getNodeName().equals(COMMAND_ELEMENT_NAME)) {
-				if (!lCommandAlreadyFound) {
+    NodeList lNodeList = lElement.getChildNodes();
+
+    boolean lCommandAlreadyFound = false;
+    for (int lIndex = 0; lIndex < lNodeList.getLength(); lIndex++) {
+
+      final Node lChildNode = lNodeList.item(lIndex);
+
+      if (lChildNode.getNodeType() == Node.ELEMENT_NODE) {
+	      switch (lChildNode.getNodeName()) {
+		      case DESCRIPTION_ELEMENT_NAME:
+		    	  String lHtmlDescription = lChildNode.getTextContent();
+		    	  lItem.setDescription(lHtmlDescription);
+		    	  break;
+		      case COMMAND_ELEMENT_NAME:
+		      
+					if (!lCommandAlreadyFound) {
 					
-					Command lCommand = CheatsheetsFactory.eINSTANCE.createCommand();
+					  Command lCommand = CheatsheetsFactory.eINSTANCE.createCommand();
 					
-					Element lCommandElement = (Element) lCommandNode;
-					final String lId = lCommandElement.getAttributes()
-							.getNamedItem(ID_ATTRIBUTE_NAME).getNodeValue();
-					lCommand.setId(lId);
-
-					final String lRequired = lCommandElement.getAttributes()
-							.getNamedItem(REQUIRED_ATTRIBUTE_NAME).getNodeValue();
-					boolean lRequiredValue = Boolean.parseBoolean(lRequired);
+					  Element lCommandElement = (Element) lChildNode;
+					  final String lId = lCommandElement.getAttributes().getNamedItem(ID_ATTRIBUTE_NAME).getNodeValue();
+					  lCommand.setId(lId);
+					  lItem.setCommand(lCommand);
 					
-					lCommand.setRequired(lRequiredValue);
+					  NodeList lParameterNodeList = lCommandElement.getChildNodes();
 					
-					lItem.setCommand(lCommand);
+					  for (int lParameterIndex = 0; lParameterIndex < lParameterNodeList.getLength(); lParameterIndex++) {
 					
-					NodeList lParameterNodeList = lCommandElement.getChildNodes();
+					    final Node lParameterNode = lParameterNodeList.item(lParameterIndex);
 					
-					for (int lParameterIndex = 0; lParameterIndex < lParameterNodeList.getLength(); lParameterIndex++) {
-
-						final Node lParameterNode = lParameterNodeList.item(lParameterIndex);
-
-						if (lParameterNode.getNodeType() == Node.ELEMENT_NODE
-								&& lParameterNode.getNodeName().equals(PARAMETER_ELEMENT_NAME)) {
-							
-							Parameter lParameter = CheatsheetsFactory.eINSTANCE.createParameter();
-							
-							final String lKey = lParameterNode.getAttributes()
-									.getNamedItem(KEY_ATTRIBUTE_NAME).getNodeValue();
-							lParameter.setKey(lKey);
-
-							final String lValue = lParameterNode.getAttributes()
-									.getNamedItem(VALUE_ATTRIBUTE_NAME).getNodeValue();
-							lParameter.setValue(lValue);
-							
-							lCommand.getParameters().add(lParameter);
-							
-						}
+					    if (lParameterNode.getNodeType() == Node.ELEMENT_NODE && lParameterNode.getNodeName().equals(PARAMETER_ELEMENT_NAME)) {
+					
+					      Parameter lParameter = CheatsheetsFactory.eINSTANCE.createParameter();
+					
+					      final String lKey = lParameterNode.getAttributes().getNamedItem(KEY_ATTRIBUTE_NAME).getNodeValue();
+					      lParameter.setKey(lKey);
+					
+					      final String lValue = lParameterNode.getAttributes().getNamedItem(VALUE_ATTRIBUTE_NAME).getNodeValue();
+					      lParameter.setValue(lValue);
+					
+					      lCommand.getParameters().add(lParameter);
+					
+					    }
+					  }
+					} else {
+					  System.err.println("Command element already found");
 					}
-				} else {
-					System.err.println("Comman element already found");
-				}
-			}
-		}
-		
-		pItems.add(lItem);
-	}
-	
-	public static void main(String[] args) {
-		
-		CheatSheets lCheatSheets = XMLParserForCheatSheet.getCheatSheets("file:///data/Dev/workspace_e4/fr.ffontenoy.example/cheatsheets/cheatsheets.xml");
-		
-		System.out.println(lCheatSheets.getCheatSheets().size());
-	}
+					break;
+		        default:
+		        	System.out.println("Element not handled: " + lChildNode.getNodeName());
+		        	break;
+		      }
+      }
+    }
+
+    pItems.add(lItem);
+  }
 
 }

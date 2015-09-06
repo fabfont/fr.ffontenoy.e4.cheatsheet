@@ -17,36 +17,35 @@ import fr.ffontenoy.e4.cheatsheet.utils.XMLParserForCheatSheet;
  */
 public class CheatsheetProcessor {
 
-	  /***
-	   * Cheatsheet extension point id
-	   */
-	  public static final String CHEATSHEET_EXTENSION_POINT_ID = "fr.ffontenoy.e4.cheatsheet.cheatsheetExtensionPoint";
-	
-	@Execute
-	public void process(IExtensionRegistry pExtensionRegistry) {
-		IConfigurationElement[] lConfigurationElements = pExtensionRegistry
-				.getConfigurationElementsFor(CHEATSHEET_EXTENSION_POINT_ID);
+  /***
+   * Cheatsheet extension point id
+   */
+  public static final String CHEATSHEET_EXTENSION_POINT_ID = "fr.ffontenoy.e4.cheatsheet.cheatsheetExtensionPoint";
 
-		switch (lConfigurationElements.length) {
-		case 0:
-			System.out.println("No extension of '"
-					+ CHEATSHEET_EXTENSION_POINT_ID
-					+ "' has been found");
-			break;
-		case 1:
-			IConfigurationElement lConfigurationElement = lConfigurationElements[0];
-			String lCheatsheetFile = lConfigurationElement
-					.getAttribute(CheatsheetExtensionAttribute.CHEATSHEET_FILE.getName());
-			String lBundleId = lConfigurationElement.getContributor().getName();
+  @Execute
+  public void process(IExtensionRegistry pExtensionRegistry) {
+    IConfigurationElement[] lConfigurationElements =
+        pExtensionRegistry.getConfigurationElementsFor(CHEATSHEET_EXTENSION_POINT_ID);
 
-			CheatsheetsPart.setCheatsheet(XMLParserForCheatSheet.getCheatSheets(CheatsheetActivator
-					.getURL(lCheatsheetFile, lBundleId).toString()));
-			break;
-		default:
-			System.err.println("Only one extension of '"
-					+ CHEATSHEET_EXTENSION_POINT_ID
-					+ "' can be defined");
-			break;
-		}
-	}
+    switch (lConfigurationElements.length) {
+    case 0:
+      System.out.println("No extension of '" + CHEATSHEET_EXTENSION_POINT_ID + "' has been found");
+      break;
+    case 1:
+      IConfigurationElement lConfigurationElement = lConfigurationElements[0];
+      String lCheatsheetFile = lConfigurationElement.getAttribute(CheatsheetExtensionAttribute.CHEATSHEET_FILE.getName());
+
+      String lShortcut = lConfigurationElement.getAttribute(CheatsheetExtensionAttribute.SHORTCUT.getName());
+
+      String lBundleId = lConfigurationElement.getContributor().getName();
+
+      CheatsheetsPart.setCheatsheet(XMLParserForCheatSheet.getCheatSheets(CheatsheetActivator.getURL(lCheatsheetFile, lBundleId)
+          .toString()));
+
+      break;
+    default:
+      System.err.println("Only one extension of '" + CHEATSHEET_EXTENSION_POINT_ID + "' can be defined");
+      break;
+    }
+  }
 }

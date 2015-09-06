@@ -3,22 +3,6 @@
 
    <extension-point id="cheatsheetExtensionPoint" name="Cheatsheet Extension Point" schema="schema/cheatsheetExtensionPoint.exsd"/>
 
-   <extension
-         id="product"
-         point="org.eclipse.core.runtime.products">
-      <product
-            name="fr.ffontenoy.e4.cheatsheet"
-            application="org.eclipse.e4.ui.workbench.swt.E4Application">
-      </product>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated CheatSheets -->
-      <package
-            uri="http://fr.ffontenoy.e4.cheatsheet/cheatsheets/1.0"
-            class="fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage"
-            genModel="model/CheatSheets.genmodel"/>
-   </extension>
 	<extension
          point="fr.ffontenoy.e4.stickyview.stickyviewExtensionPoint">
       <StickyView
@@ -27,7 +11,7 @@
             partClass="fr.ffontenoy.e4.cheatsheet.parts.CheatsheetsPart"
             partId="fr.ffontenoy.e4.cheatsheet.Cheatsheet"
             position="right"
-            shortcut="M1+M2+C"
+            shortcut="M1+M2+T"
             visibleAtStartup="false">
       </StickyView>
    </extension>
@@ -40,4 +24,12 @@
           class="fr.ffontenoy.e4.cheatsheet.processors.CheatsheetProcessor">
     </processor>
  </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated CheatSheets -->
+      <package
+            uri="http://fr.ffontenoy.e4.cheatsheet/cheatsheets/1.0"
+            class="fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage"
+            genModel="model/CheatSheets.genmodel"/>
+   </extension>
+
 </plugin>

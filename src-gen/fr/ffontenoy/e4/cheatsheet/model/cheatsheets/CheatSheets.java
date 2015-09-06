@@ -24,19 +24,19 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CheatSheets extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Cheat Sheets</b></em>' reference list.
-	 * The list contents are of type {@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatSheet}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Cheat Sheets</b></em>' reference list.
+   * The list contents are of type {@link fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatSheet}.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cheat Sheets</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cheat Sheets</em>' reference list.
-	 * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheets_CheatSheets()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Cheat Sheets</em>' reference list.
+   * @see fr.ffontenoy.e4.cheatsheet.model.cheatsheets.CheatsheetsPackage#getCheatSheets_CheatSheets()
+   * @model
+   * @generated
+   */
 	EList<CheatSheet> getCheatSheets();
 
 } // CheatSheets

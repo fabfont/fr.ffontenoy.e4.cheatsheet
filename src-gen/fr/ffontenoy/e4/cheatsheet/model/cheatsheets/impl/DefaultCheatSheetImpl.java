@@ -36,224 +36,224 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class DefaultCheatSheetImpl extends MinimalEObjectImpl.Container implements CheatSheet {
 	/**
-	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getTitle()
+   * @generated
+   * @ordered
+   */
 	protected static final String TITLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getTitle()
+   * @generated
+   * @ordered
+   */
 	protected String title = TITLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getItems() <em>Items</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getItems() <em>Items</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItems()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getItems()
+   * @generated
+   * @ordered
+   */
 	protected EList<Item> items;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DefaultCheatSheetImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CheatsheetsPackage.Literals.CHEAT_SHEET;
-	}
+    return CheatsheetsPackage.Literals.CHEAT_SHEET;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String getTitle() {
-		return title;
-	}
+    return title;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public void setTitle(String newTitle) {
-		String oldTitle = title;
-		title = newTitle;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CheatsheetsPackage.CHEAT_SHEET__TITLE, oldTitle, title));
-	}
+    String oldTitle = title;
+    title = newTitle;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CheatsheetsPackage.CHEAT_SHEET__TITLE, oldTitle, title));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String getDescription() {
-		return description;
-	}
+    return description;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public void setDescription(String newDescription) {
-		String oldDescription = description;
-		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION, oldDescription, description));
-	}
+    String oldDescription = description;
+    description = newDescription;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION, oldDescription, description));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EList<Item> getItems() {
-		if (items == null) {
-			items = new EObjectResolvingEList<Item>(Item.class, this, CheatsheetsPackage.CHEAT_SHEET__ITEMS);
-		}
-		return items;
-	}
+    if (items == null) {
+      items = new EObjectResolvingEList<Item>(Item.class, this, CheatsheetsPackage.CHEAT_SHEET__ITEMS);
+    }
+    return items;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CheatsheetsPackage.CHEAT_SHEET__TITLE:
-				return getTitle();
-			case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
-				return getDescription();
-			case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
-				return getItems();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CheatsheetsPackage.CHEAT_SHEET__TITLE:
+        return getTitle();
+      case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
+        return getDescription();
+      case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
+        return getItems();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CheatsheetsPackage.CHEAT_SHEET__TITLE:
-				setTitle((String)newValue);
-				return;
-			case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
-			case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
-				getItems().clear();
-				getItems().addAll((Collection<? extends Item>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CheatsheetsPackage.CHEAT_SHEET__TITLE:
+        setTitle((String)newValue);
+        return;
+      case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
+        setDescription((String)newValue);
+        return;
+      case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
+        getItems().clear();
+        getItems().addAll((Collection<? extends Item>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CheatsheetsPackage.CHEAT_SHEET__TITLE:
-				setTitle(TITLE_EDEFAULT);
-				return;
-			case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
-				getItems().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CheatsheetsPackage.CHEAT_SHEET__TITLE:
+        setTitle(TITLE_EDEFAULT);
+        return;
+      case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
+        setDescription(DESCRIPTION_EDEFAULT);
+        return;
+      case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
+        getItems().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CheatsheetsPackage.CHEAT_SHEET__TITLE:
-				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-			case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
-				return items != null && !items.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CheatsheetsPackage.CHEAT_SHEET__TITLE:
+        return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+      case CheatsheetsPackage.CHEAT_SHEET__DESCRIPTION:
+        return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+      case CheatsheetsPackage.CHEAT_SHEET__ITEMS:
+        return items != null && !items.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (title: ");
-		result.append(title);
-		result.append(", description: ");
-		result.append(description);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (title: ");
+    result.append(title);
+    result.append(", description: ");
+    result.append(description);
+    result.append(')');
+    return result.toString();
+  }
 
 } //DefaultCheatSheetImpl

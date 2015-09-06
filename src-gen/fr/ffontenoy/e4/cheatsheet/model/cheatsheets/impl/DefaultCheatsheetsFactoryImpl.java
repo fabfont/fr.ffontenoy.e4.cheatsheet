@@ -20,120 +20,120 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class DefaultCheatsheetsFactoryImpl extends EFactoryImpl implements CheatsheetsFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static CheatsheetsFactory init() {
-		try {
-			CheatsheetsFactory theCheatsheetsFactory = (CheatsheetsFactory)EPackage.Registry.INSTANCE.getEFactory(CheatsheetsPackage.eNS_URI);
-			if (theCheatsheetsFactory != null) {
-				return theCheatsheetsFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new DefaultCheatsheetsFactoryImpl();
-	}
+    try {
+      CheatsheetsFactory theCheatsheetsFactory = (CheatsheetsFactory)EPackage.Registry.INSTANCE.getEFactory(CheatsheetsPackage.eNS_URI);
+      if (theCheatsheetsFactory != null) {
+        return theCheatsheetsFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new DefaultCheatsheetsFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DefaultCheatsheetsFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case CheatsheetsPackage.CHEAT_SHEETS: return createCheatSheets();
-			case CheatsheetsPackage.CHEAT_SHEET: return createCheatSheet();
-			case CheatsheetsPackage.ITEM: return createItem();
-			case CheatsheetsPackage.COMMAND: return createCommand();
-			case CheatsheetsPackage.PARAMETER: return createParameter();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case CheatsheetsPackage.CHEAT_SHEETS: return createCheatSheets();
+      case CheatsheetsPackage.CHEAT_SHEET: return createCheatSheet();
+      case CheatsheetsPackage.ITEM: return createItem();
+      case CheatsheetsPackage.COMMAND: return createCommand();
+      case CheatsheetsPackage.PARAMETER: return createParameter();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CheatSheets createCheatSheets() {
-		DefaultCheatSheetsImpl cheatSheets = new DefaultCheatSheetsImpl();
-		return cheatSheets;
-	}
+    DefaultCheatSheetsImpl cheatSheets = new DefaultCheatSheetsImpl();
+    return cheatSheets;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CheatSheet createCheatSheet() {
-		DefaultCheatSheetImpl cheatSheet = new DefaultCheatSheetImpl();
-		return cheatSheet;
-	}
+    DefaultCheatSheetImpl cheatSheet = new DefaultCheatSheetImpl();
+    return cheatSheet;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Item createItem() {
-		DefaultItemImpl item = new DefaultItemImpl();
-		return item;
-	}
+    DefaultItemImpl item = new DefaultItemImpl();
+    return item;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Command createCommand() {
-		DefaultCommandImpl command = new DefaultCommandImpl();
-		return command;
-	}
+    DefaultCommandImpl command = new DefaultCommandImpl();
+    return command;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Parameter createParameter() {
-		DefaultParameterImpl parameter = new DefaultParameterImpl();
-		return parameter;
-	}
+    DefaultParameterImpl parameter = new DefaultParameterImpl();
+    return parameter;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CheatsheetsPackage getCheatsheetsPackage() {
-		return (CheatsheetsPackage)getEPackage();
-	}
+    return (CheatsheetsPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static CheatsheetsPackage getPackage() {
-		return CheatsheetsPackage.eINSTANCE;
-	}
+    return CheatsheetsPackage.eINSTANCE;
+  }
 
 } //DefaultCheatsheetsFactoryImpl

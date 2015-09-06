@@ -16,29 +16,33 @@ package fr.ffontenoy.e4.cheatsheet.extensionpoint;
  */
 public enum CheatsheetExtensionAttribute {
 
-	/**
-	 * Path to the cheatsheet file
-	 */
-	CHEATSHEET_FILE("cheatsheetFile");
+  /**
+   * Path to the cheatsheet file
+   */
+  CHEATSHEET_FILE("cheatsheetFile"),
 
-	/** attibute name */
-	private final String mName;
+  /**
+   * Shortcut sequence
+   */
+  SHORTCUT("shortcut");
 
-	/**
-	 * Constructor
-	 * 
-	 * @param pName
-	 *            the enum name
-	 */
-	private CheatsheetExtensionAttribute(String pName) {
-		mName = pName;
-	}
+  /** attibute name */
+  private final String mName;
 
-	/**
-	 * @return the attribute name
-	 */
-	public String getName() {
-		return mName;
-	}
+  /**
+   * Constructor
+   * 
+   * @param pName the enum name
+   */
+  private CheatsheetExtensionAttribute(String pName) {
+    mName = pName;
+  }
+
+  /**
+   * @return the attribute name
+   */
+  public String getName() {
+    return mName;
+  }
 
 }

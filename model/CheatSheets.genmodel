@@ -21,7 +21,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CheatSheets.ecore#//Item/command"/>
     </genClasses>
     <genClasses ecoreClass="CheatSheets.ecore#//Command">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CheatSheets.ecore#//Command/required"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CheatSheets.ecore#//Command/id"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CheatSheets.ecore#//Command/parameters"/>
     </genClasses>
