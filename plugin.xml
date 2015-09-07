@@ -11,7 +11,7 @@
             partClass="fr.ffontenoy.e4.cheatsheet.parts.CheatsheetsPart"
             partId="fr.ffontenoy.e4.cheatsheet.Cheatsheet"
             position="right"
-            shortcut="M1+M2+T"
+            shortcut="M1+M2+C"
             visibleAtStartup="false">
       </StickyView>
    </extension>
