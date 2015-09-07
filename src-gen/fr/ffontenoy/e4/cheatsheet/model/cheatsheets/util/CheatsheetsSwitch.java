@@ -24,171 +24,171 @@ import org.eclipse.emf.ecore.util.Switch;
  */
 public class CheatsheetsSwitch<T> extends Switch<T> {
 	/**
-   * The cached model package
-   * <!-- begin-user-doc -->
+	 * The cached model package
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected static CheatsheetsPackage modelPackage;
 
 	/**
-   * Creates an instance of the switch.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the switch.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public CheatsheetsSwitch() {
-    if (modelPackage == null) {
-      modelPackage = CheatsheetsPackage.eINSTANCE;
-    }
-  }
+		if (modelPackage == null) {
+			modelPackage = CheatsheetsPackage.eINSTANCE;
+		}
+	}
 
 	/**
-   * Checks whether this is a switch for the given package.
-   * <!-- begin-user-doc -->
+	 * Checks whether this is a switch for the given package.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
-   * @return whether this is a switch for the given package.
-   * @generated
-   */
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
+	 * @generated
+	 */
 	@Override
 	protected boolean isSwitchFor(EPackage ePackage) {
-    return ePackage == modelPackage;
-  }
+		return ePackage == modelPackage;
+	}
 
 	/**
-   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-   * <!-- begin-user-doc -->
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @return the first non-null result returned by a <code>caseXXX</code> call.
-   * @generated
-   */
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @generated
+	 */
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
-    switch (classifierID) {
-      case CheatsheetsPackage.CHEAT_SHEETS: {
-        CheatSheets cheatSheets = (CheatSheets)theEObject;
-        T result = caseCheatSheets(cheatSheets);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CheatsheetsPackage.CHEAT_SHEET: {
-        CheatSheet cheatSheet = (CheatSheet)theEObject;
-        T result = caseCheatSheet(cheatSheet);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CheatsheetsPackage.ITEM: {
-        Item item = (Item)theEObject;
-        T result = caseItem(item);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CheatsheetsPackage.COMMAND: {
-        Command command = (Command)theEObject;
-        T result = caseCommand(command);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CheatsheetsPackage.PARAMETER: {
-        Parameter parameter = (Parameter)theEObject;
-        T result = caseParameter(parameter);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      default: return defaultCase(theEObject);
-    }
-  }
+		switch (classifierID) {
+			case CheatsheetsPackage.CHEAT_SHEETS: {
+				CheatSheets cheatSheets = (CheatSheets)theEObject;
+				T result = caseCheatSheets(cheatSheets);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CheatsheetsPackage.CHEAT_SHEET: {
+				CheatSheet cheatSheet = (CheatSheet)theEObject;
+				T result = caseCheatSheet(cheatSheet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CheatsheetsPackage.ITEM: {
+				Item item = (Item)theEObject;
+				T result = caseItem(item);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CheatsheetsPackage.COMMAND: {
+				Command command = (Command)theEObject;
+				T result = caseCommand(command);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CheatsheetsPackage.PARAMETER: {
+				Parameter parameter = (Parameter)theEObject;
+				T result = caseParameter(parameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
+		}
+	}
 
 	/**
-   * Returns the result of interpreting the object as an instance of '<em>Cheat Sheets</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Cheat Sheets</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Cheat Sheets</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cheat Sheets</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
 	public T caseCheatSheets(CheatSheets object) {
-    return null;
-  }
+		return null;
+	}
 
 	/**
-   * Returns the result of interpreting the object as an instance of '<em>Cheat Sheet</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Cheat Sheet</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Cheat Sheet</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cheat Sheet</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
 	public T caseCheatSheet(CheatSheet object) {
-    return null;
-  }
+		return null;
+	}
 
 	/**
-   * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Item</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
 	public T caseItem(Item object) {
-    return null;
-  }
+		return null;
+	}
 
 	/**
-   * Returns the result of interpreting the object as an instance of '<em>Command</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Command</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Command</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Command</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
 	public T caseCommand(Command object) {
-    return null;
-  }
+		return null;
+	}
 
 	/**
-   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
 	public T caseParameter(Parameter object) {
-    return null;
-  }
+		return null;
+	}
 
 	/**
-   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+	 * @generated
+	 */
 	@Override
 	public T defaultCase(EObject object) {
-    return null;
-  }
+		return null;
+	}
 
 } //CheatsheetsSwitch

@@ -19,6 +19,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CheatSheets.ecore#//Item/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CheatSheets.ecore#//Item/description"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CheatSheets.ecore#//Item/command"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CheatSheets.ecore#//Item/height"/>
     </genClasses>
     <genClasses ecoreClass="CheatSheets.ecore#//Command">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CheatSheets.ecore#//Command/id"/>

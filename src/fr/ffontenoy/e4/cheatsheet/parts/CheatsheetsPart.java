@@ -304,7 +304,12 @@ public class CheatsheetsPart {
 
         lExpandItem.setExpanded(lIndex == 0);
 
-        lExpandItem.setHeight(lComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
+        if (lItem.getHeight() != null) {
+        	lExpandItem.setHeight(lItem.getHeight());
+        } else {
+        	lExpandItem.setHeight(lComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
+        }
+        
         lExpandItem.setControl(lComposite);
         lExpandItem.getControl().setBackground(CHEATSHEET_BACKGROUND_COLOR);
         lExpandItems.put(lIndex, lExpandItem);

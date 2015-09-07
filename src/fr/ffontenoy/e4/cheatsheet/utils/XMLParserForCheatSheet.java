@@ -69,6 +69,11 @@ public final class XMLParserForCheatSheet {
   private static final String DESCRIPTION_ATTRIBUTE_NAME = "description";
 
   /**
+   * Height attribute name (for "height").
+   */
+  private static final String HEIGHT_ATTRIBUTE_NAME = "height";
+ 
+  /**
    * Id attribute name (for "id").
    */
   private static final String ID_ATTRIBUTE_NAME = "id";
@@ -194,6 +199,15 @@ public final class XMLParserForCheatSheet {
     final String lTitle = lElement.getAttributes().getNamedItem(TITLE_ATTRIBUTE_NAME).getNodeValue();
     lItem.setTitle(lTitle);
 
+    final Node lHeightNode = lElement.getAttributes().getNamedItem(HEIGHT_ATTRIBUTE_NAME);
+    if (lHeightNode != null) {
+    	try {
+    		lItem.setHeight(Integer.valueOf(lHeightNode.getNodeValue()));
+    	} catch (NumberFormatException lE) {
+    		// Do nothing
+    	}
+    }
+    
     NodeList lNodeList = lElement.getChildNodes();
 
     boolean lCommandAlreadyFound = false;
