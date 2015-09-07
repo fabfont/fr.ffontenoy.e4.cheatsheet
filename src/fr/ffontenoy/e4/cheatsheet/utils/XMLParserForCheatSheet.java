@@ -194,9 +194,6 @@ public final class XMLParserForCheatSheet {
     final String lTitle = lElement.getAttributes().getNamedItem(TITLE_ATTRIBUTE_NAME).getNodeValue();
     lItem.setTitle(lTitle);
 
-    final String lDescription = lElement.getAttributes().getNamedItem(DESCRIPTION_ATTRIBUTE_NAME).getNodeValue();
-    lItem.setDescription(lDescription);
-
     NodeList lNodeList = lElement.getChildNodes();
 
     boolean lCommandAlreadyFound = false;
