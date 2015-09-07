@@ -1,6 +1,8 @@
 package fr.ffontenoy.e4.cheatsheet.parts;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +30,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ExpandEvent;
+import org.eclipse.swt.events.ExpandListener;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.graphics.Color;
@@ -174,12 +178,32 @@ public class CheatsheetsPart {
       lDescriptionLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
       mStylingEngine.setClassname(lDescriptionLabel, CHEATSHEET_DESCR_CLASSNAME);
 
-      ExpandBar lExpandBar = new ExpandBar(mCheatsheetComposite, SWT.V_SCROLL | SWT.FILL);
+      ExpandBar lExpandBar = new ExpandBar(mCheatsheetComposite, SWT.FILL);
       lExpandBar.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
       lExpandBar.setLayout(new GridLayout(1, true));
       lExpandBar.setBackground(CHEATSHEET_BACKGROUND_COLOR);
       lExpandBar.setBackgroundMode(SWT.INHERIT_FORCE);
 
+      lExpandBar.addExpandListener(new ExpandListener() {
+		
+		@Override
+		public void itemExpanded(ExpandEvent lExpandEvent) {
+			for (ExpandItem lExpandItem : lExpandBar.getItems()) {
+				if (lExpandEvent.getSource() == lExpandItem) {
+					lExpandItem.setExpanded(true);
+				} else {
+					lExpandItem.setExpanded(false);
+				}
+			}
+		}
+		
+		@Override
+		public void itemCollapsed(ExpandEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	});
+      
       int lIndex = 0;
       List<Item> lItems = lSelectedCheatSheet.getItems();
       Map<Integer, ExpandItem> lExpandItems = new HashMap<Integer, ExpandItem>();
@@ -187,7 +211,7 @@ public class CheatsheetsPart {
 
         final int lCurrentIndex = lIndex;
 
-        Composite lComposite = new Composite(lExpandBar, SWT.NONE);
+        Composite lComposite = new Composite(lExpandBar, SWT.FILL);
         lComposite.setBackground(CHEATSHEET_BACKGROUND_COLOR);
         GridData lGridData = new GridData(GridData.FILL_BOTH);
         if (lIndex == 0) {
@@ -203,29 +227,15 @@ public class CheatsheetsPart {
 
         String lDescription = lItem.getDescription();
         
-        Pattern lBundlePattern = Pattern.compile(BUNDLE_PATTERN);
-        Matcher lMatcher = lBundlePattern.matcher(lDescription);
-        
-        while (lMatcher.find()) {
-        	String lMatch = lMatcher.group(1);
-        	String lBundleId = lMatch.substring(9, lMatch.length()-1);
-        	Bundle lBundle = Platform.getBundle(lBundleId);
-
-        	URL lUrl = FileLocator.find(lBundle, new Path("."), null);
-
-        	try {
-				URL lFileURL = FileLocator.toFileURL(lUrl);
-				lDescription = lDescription.replace(lMatch, lFileURL.getFile());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+        if (lDescription != null) {
+	        lDescription = replaceBundlePathes(lDescription);
+	        
+	        Browser lBrowser = new Browser(lComposite, SWT.FILL  );
+	        GridData lBrowserGridData = new GridData(GridData.FILL_BOTH);
+	        lBrowser.setLayoutData(lBrowserGridData);
+	        lBrowser.setText(lDescription);
+	        lBrowser.setBackground(CHEATSHEET_BACKGROUND_COLOR);
         }
-        
-        Browser lBrowser = new Browser(lComposite, SWT.FILL);
-        GridData lBrowserGridData = new GridData(SWT.FILL, SWT.FILL, true, false);
-        lBrowser.setLayoutData(lBrowserGridData);
-        lBrowser.setText(lDescription);
-        lBrowser.setBackground(CHEATSHEET_BACKGROUND_COLOR);
         
         Composite lButtonComposite = new Composite(lComposite, SWT.NONE);
         lButtonComposite.setLayout(new GridLayout(2, true));
@@ -307,6 +317,34 @@ public class CheatsheetsPart {
     mScrolledComposite.setMinSize(mCheatsheetComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
   }
 
+/**
+ * Replace bundle url (defined by bundle://<bundle id>/<relative path>) by its corresponding absolute path
+ * 
+ * @param pText the incoming text
+ * @return the text with bundle url replaced
+ */
+private String replaceBundlePathes(String pText) {
+	Pattern lBundlePattern = Pattern.compile(BUNDLE_PATTERN);
+	Matcher lMatcher = lBundlePattern.matcher(pText);
+	
+	while (lMatcher.find()) {
+		String lMatch = lMatcher.group(1);
+		String lBundleId = lMatch.substring(9, lMatch.length()-1);
+		Bundle lBundle = Platform.getBundle(lBundleId);
+
+		URL lUrl = FileLocator.find(lBundle, new Path("."), null);
+
+		try {
+			URL lFileURL = FileLocator.toFileURL(lUrl);
+			File lFile = new File(lFileURL.toURI());
+			pText = pText.replace(lMatch, lFile.getCanonicalPath() + File.separator);
+		} catch (IOException | URISyntaxException lE) {
+			lE.printStackTrace();
+		}
+	}
+	return pText;
+}
+
   /**
    * Build the table of contents of the online help.
    *
@@ -335,7 +373,7 @@ public class CheatsheetsPart {
     for (CheatSheet lCheatSheet : gCheatsheets.getCheatSheets()) {
       final Label lLabel = new Label(lTocComposite, SWT.LEFT);
       String lTitle = lCheatSheet.getTitle();
-      lLabel.setText(lTitle);
+      lLabel.setText((lIndex+1) + ". "+ lTitle);
       lLabel.setToolTipText(lCheatSheet.getDescription());
       GridData lItemGridData = new GridData(SWT.FILL, SWT.FILL, true, false);
       if (lIndex == 0) {
@@ -366,54 +404,6 @@ public class CheatsheetsPart {
   @Focus
   public void focus() {
   }
-
-  // /**
-  // * Build the help table of contents items from a list of TocItem
-  // instances.
-  // *
-  // * @param pItems
-  // * the TocItem instances
-  // * @param pParent
-  // * the parent composite
-  // * @param pDepth
-  // * The toc item depth. Used for indentation.
-  // */
-  // private void buildTopics(final EList<TocItem> pItems,
-  // final Composite pParent, final int pDepth) {
-  // for (final TocItem lTocItem : pItems) {
-  // final Label lLabel = new Label(pParent, SWT.LEFT);
-  // lLabel.setText(lTocItem.getLabel());
-  // final GridData lGridData = new GridData(SWT.FILL, SWT.FILL, true,
-  // false);
-  // lGridData.horizontalIndent = pDepth * TOPIC_INDENTATION_FACTOR;
-  // lLabel.setLayoutData(lGridData);
-  // lLabel.setBackground(TOC_BACKGROUND_COLOR);
-  // mStylingEngine.setClassname(lLabel, TOC_ITEM_CLASSNAME + pDepth);
-  //
-  // final String lHref = lTocItem.getHref();
-  // final String lAnchor = lHref.substring(lHref
-  // .indexOf(HTML_ANCHOR_SEPARATOR) + 1);
-  //
-  // lLabel.addMouseListener(new MouseAdapter() {
-  //
-  // /**
-  // * Sent when a mouse button is pressed.
-  // *
-  // * @param pE
-  // * an event containing information about the mouse
-  // * button press
-  // */
-  // @Override
-  // public void mouseDown(final MouseEvent arg0) {
-  // mApplication.getContext().set(
-  // HelpConstants.HELP_ANCHOR_CONTEXT_ID, lAnchor);
-  // }
-  // });
-  //
-  // // Build sub topics
-  // buildTopics(lTocItem.getSubItems(), pParent, pDepth + 1);
-  // }
-  // }
 
   /**
    * Set the cheatsheet instance
