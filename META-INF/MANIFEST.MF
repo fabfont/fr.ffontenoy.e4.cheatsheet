@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: fr.ffontenoy.e4.cheatsheet;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -17,7 +17,8 @@ Require-Bundle: javax.inject;bundle-version="1.0.0",
  org.eclipse.e4.core.di;bundle-version="1.4.0",
  org.eclipse.e4.ui.di;bundle-version="1.0.0",
  org.eclipse.e4.core.contexts;bundle-version="1.3.100",
- org.eclipse.e4.core.commands
+ org.eclipse.e4.core.commands,
+ fr.ffontenoy.e4.stickyview;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: fr.ffontenoy.e4.cheatsheet.model.cheatsheets,
